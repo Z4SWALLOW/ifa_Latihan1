@@ -18,7 +18,13 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
+            SizedBox(
+              height: 10,
+            ),
             Text("Universitas Teknokrat Indonesia"),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 50,
               width: 430,
@@ -31,12 +37,86 @@ class MyApp extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
                 Text("data 1 "),
                 Text("data 2 "),
                 Text("data 3 "),
                 Text("data 4 "),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 30,
+                  width: 30,
+                  color: Colors.cyan,
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  color: Colors.green,
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  color: Colors.black,
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration:
+                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration:
+                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration:
+                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration:
+                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration:
+                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
               ],
             )
           ],
