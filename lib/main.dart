@@ -4,147 +4,131 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Latihan1",
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: Text("Latihan 1"),
-        ),
-        body: Column(
+    return MaterialApp(home: FormInput());
+  }
+}
+
+class FormInput extends StatefulWidget {
+  const FormInput({super.key});
+
+  @override
+  State<FormInput> createState() => _FormInputState();
+}
+
+class _FormInputState extends State<FormInput> {
+  String? _jk;
+  void pilihJK(String? value) {
+    setState(() {
+      _jk = value;
+    });
+  }
+
+  List<String> agama = [
+    "Islam",
+    "Kristen",
+    "Katolik",
+    "Hindu",
+    "Budha",
+    "Konghucu",
+    "Lainnya",
+  ];
+
+  String? _agama = "Islam";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.list),
+        title: Text("Form Input"),
+        backgroundColor: Colors.cyan,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: ListView(
           children: [
-            SizedBox(
-              height: 10,
-            ),
-            Text("Universitas Teknokrat Indonesia"),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 50,
-              width: 430,
-              color: Colors.cyan,
-              child: Row(
-                children: [
-                  Text("data 1 "),
-                  Text("data 1 "),
-                  Text("data 1 "),
-                ],
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Nama Lengkap",
+                labelText: "Nama Lengkap",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Text("data 1 "),
-                Text("data 2 "),
-                Text("data 3 "),
-                Text("data 4 "),
-              ],
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: "Password",
+                labelText: "Password",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
             ),
             SizedBox(
               height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.cyan,
+            TextField(
+              maxLines: 3,
+              maxLength: 100,
+              decoration: InputDecoration(
+                hintText: "Alamat",
+                labelText: "Alamat",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.red,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.green,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.grey,
-                ),
-              ],
+              ),
             ),
             SizedBox(
               height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration:
-                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration:
-                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration:
-                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration:
-                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration:
-                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-                ),
-              ],
+            RadioListTile(
+              value: "Laki-Laki",
+              title: Text("Laki-Laki"),
+              groupValue: _jk,
+              onChanged: (String? value) {
+                pilihJK(value!);
+              },
+              activeColor: Colors.lightBlue,
+              subtitle: Text("Pilih ini jika Laki-Laki"),
             ),
-            SizedBox(
-              height: 10,
+            RadioListTile(
+              value: "Perempuan",
+              title: Text("Perempuan"),
+              groupValue: _jk,
+              onChanged: (String? value) {
+                pilihJK(value!);
+              },
+              activeColor: Colors.lightBlue,
+              subtitle: Text("Pilih ini jika Perempuan"),
             ),
-            CustomPaint(
-              size: Size(200, 200),
-              painter: segitiga(),
+            RadioListTile(
+              value: "Custom",
+              title: Text("Custom"),
+              groupValue: _jk,
+              onChanged: (String? value) {
+                pilihJK(value!);
+              },
+              activeColor: Colors.lightBlue,
+              subtitle: Text("Pilih ini jika Custom"),
             ),
           ],
         ),
       ),
     );
   }
-}
-
-class segitiga extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = Colors.green;
-    final path = Path()
-      ..moveTo(size.width / 2, 0)
-      ..lineTo(size.width, size.height)
-      ..lineTo(0, size.height)
-      ..close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
